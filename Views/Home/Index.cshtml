@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<div class="form-group">
+    <label> Upload File </label>
+    <input type="file" id="file" class="form-control" multiple/>
+    <button class="btn btn-primary" id="subBtn" onclick="upload()">Upload</button>
+<div>
+
+@section scripts{
+    <script>
+        function upload(){
+            console.log("Alert")
+            const file = $('#file').prop('files')[0];
+
+            $.ajax({
+                url: "/home/upload",
+                method: 'POST',
+                data: {file: file},
+                contentType: false,
+                processData: false,
+                success: function(result){
+                    alert()
+                },
+                error: function(result){
+                    alert("unable to upload")
+                }
+            });
+
+        }
+
+
+        
+        
+    </script>
+}
